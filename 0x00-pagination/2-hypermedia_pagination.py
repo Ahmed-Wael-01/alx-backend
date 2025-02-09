@@ -38,3 +38,21 @@ class Server:
         if end > len(data):
             return []
         return data[st:end]
+
+    def get_hyper(self, page: int = 1, page_size: int = 10):
+        """using a hypermedia method"""
+        assert type(page) == int and type(page_size) == int
+        assert page > 0 and page_size > 0
+        st, end = index_range(page, page_size)
+        data = self.dataset()
+        dataLen = len(data)
+        div = int(dataLen / page_size)
+        tp = div + 1 if (dataLen % page_size) != 0 else div
+        return {
+                'page_size': page_size if end <= dataLen else 0,
+                'page': page,
+                'data': data[st:end] if end <= dataLen else [],
+                'next_page': page + 1 if dataLen >= end else None,
+                'prev_page': None if st == 0 else page - 1,
+                'total_pages': tp
+                }
