@@ -40,7 +40,7 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-        """deletion resiliant hypermedia pagin"""    
+        """deletion resiliant hypermedia pagin"""
         assert index >= 0 and index < len(self.dataset())
         return {
                 'index': index,
