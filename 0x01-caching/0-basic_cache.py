@@ -2,14 +2,14 @@
 """ basic dictionary """
 BaseCaching = __import__('base_caching').BaseCaching
 
+
 class BasicCache(BaseCaching):
     """ basic cache """
     def put(self, key, item):
         """ puts item in the cache """
 
-        if key is None or item is None:
-            pass
-        self.cache_data[key] = item
+        if key is not None and item is not None:
+            self.cache_data[key] = item
 
     def get(self, key):
         """ gets item """
