@@ -1,27 +1,30 @@
 #!/usr/bin/python3
-"""
-Test
-"""
-import sys
+""" 4-main """
+MRUCache = __import__('4-mru_cache').MRUCache
 
-try:
-    LRUCache = __import__('3-lru_cache').LRUCache
-    from base_caching import BaseCaching
-
-    BaseCaching.MAX_ITEMS = 2
-    LRUCache.MAX_ITEMS = 2
-    my_cache = LRUCache()
-    my_cache.MAX_ITEMS = 2
-    prev_key = None
-
-    for i in range(10):
-        key = "key-{}".format(i)
-        value = "value-{}".format(i)
-        if prev_key is not None:
-            my_cache.get(prev_key)
-        prev_key = key
-        my_cache.put(key, value)
-        my_cache.print_cache()
-
-except:
-    print(sys.exc_info()[1])
+my_cache = MRUCache()
+my_cache.put("A", "Hello")
+my_cache.put("B", "World")
+my_cache.put("C", "ALX")
+my_cache.put("D", "School")
+my_cache.print_cache()
+print(my_cache.get("B"))
+my_cache.put("E", "Battery")
+my_cache.print_cache()
+my_cache.put("C", "Street")
+my_cache.print_cache()
+print(my_cache.get("A"))
+print(my_cache.get("B"))
+print(my_cache.get("C"))
+my_cache.put("F", "Mission")
+my_cache.print_cache()
+my_cache.put("G", "San Francisco")
+my_cache.print_cache()
+my_cache.put("H", "H")
+my_cache.print_cache()
+my_cache.put("I", "I")
+my_cache.print_cache()
+my_cache.put("J", "J")
+my_cache.print_cache()
+my_cache.put("K", "K")
+my_cache.print_cache()
