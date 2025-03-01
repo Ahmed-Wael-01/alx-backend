@@ -27,5 +27,5 @@ class LRUCache(BaseCaching):
 
         if key is None or key not in self.cache_data:
             return None
-        self.lruArr.insert(-1, self.lruArr.pop(self.lruArr.index(key)))
+        self.lruArr.append(self.lruArr.pop(self.lruArr.index(key)))
         return self.cache_data[key]
