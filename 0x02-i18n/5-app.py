@@ -46,7 +46,7 @@ def get_user():
 def before_request():
     """ find user before any function """
     usr = get_user()
-    if usr != None:
+    if usr is not None:
         g.user = usr
 
 
